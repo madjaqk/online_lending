@@ -1,0 +1,51 @@
+first_names = ["Noah", "Liam", "Mason", "Jacob", "William", "Ethan", "Michael", "Alexander", "James", "Daniel", "Emma", "Olivia", "Sophia", "Isabella", "Ava", "Mia", "Emily", "Abigail", "Madison", "Charlotte"]
+last_names = ["Smith", "Johnson", "Williams", "Brown", "Jones", "Miller", "Davis", "Garcia", "Rodriguez", "Wilson", "Martinez", "Anderson", "Taylor", "Thomas", "Hernandez", "Moore", "Martin", "Jackson", "Thompson", "Lopez", "Lee", "Gonzalez", "Harris"]
+
+email_patterns = ["firstlast@host.com", "first.last@host.com", "finitlast@host.com", "firstlinit@host.com", "lastfirst@host.com"]
+
+email_hosts = ["gmail", "yahoo", "hotmail", "codingdojo"]
+
+passwords = ["123456", "password", "12345678", "qwerty", "football", "1234567", "baseball", "welcome", "1234567890", "abc123", "111111", "1qaz2wsx", "dragon", "master", "monkey", "letmein", "princess", "qwertyuiop", "passw0rd", "starwars"]
+
+purposes = ["Green energy", "Facebook", "Computers", "Bicycles", "VR", "SnapChat", "Dr Pepper", "Diet soft drinks", "Puzzles", "Breakfast", "Money", "Cheese", "Oil", "Drugs (legal)", "Drugs (illegal)"]
+
+10.times do
+	new_guy = {}
+	@first = first_names.sample
+	@last = last_names.sample
+	new_guy[:first_name] = @first
+	new_guy[:last_name] = @last
+	host = email_hosts.sample
+	format = email_patterns.sample
+	new_guy[:email] = format.gsub(/first/,@first).gsub(/last/,@last).gsub(/finit/,@first[0]).gsub(/linit/,@last[0]).gsub(/host/,host)
+	new_guy[:password] = passwords.sample
+	new_guy[:money] = rand(1000..10000)
+	lender = Lender.new(new_guy)
+	lender.save if lender.valid?
+end
+
+10.times do
+	new_guy = {}
+	@first = first_names.sample
+	@last = last_names.sample
+	new_guy[:first_name] = @first
+	new_guy[:last_name] = @last
+	host = email_hosts.sample
+	format = email_patterns.sample
+	new_guy[:email] = format.gsub(/first/,@first).gsub(/last/,@last).gsub(/finit/,@first[0]).gsub(/linit/,@last[0]).gsub(/host/,host)
+	new_guy[:password] = passwords.sample
+	new_guy[:money] = rand(500..10000)
+	new_guy[:purpose] = purposes.sample
+	new_guy[:raised] = 0
+	borrower = Borrower.new(new_guy)
+	borrower.save if borrower.valid?
+end
+
+20.times do 
+	@borrower = Borrower.all.sample
+	@lender = Lender.all.sample
+	@amount = rand(10..50)
+	loan = History.create(borrower: @borrower, lender: @lender, amount: @amount)
+	@borrower.raised += @amount
+	@lender.money -= @amount
+end

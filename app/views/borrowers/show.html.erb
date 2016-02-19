@@ -1,0 +1,25 @@
+<table>
+	<tr><td>Name:</td>
+		<td><%= @borrower.first_name %> <%= @borrower.last_name %></td>
+	</tr>
+	<tr><td>Amount Needed:</td>
+		<td><%= number_to_currency(@borrower.money) %></td>
+	</tr>
+	<tr><td>Amount Raised:</td>
+		<td><%= number_to_currency(@borrower.raised) %></td>
+	</tr>
+</table>
+
+<h3>List of people who have lent you money:</h3>
+<table>
+	<tr><th>Name:</th>
+		<th>E-mail:</th>
+		<th>Amount Lent:</th>
+	</tr>
+	<% @loans.each do |loan| %>
+		<tr><td><%= loan.first_name %> <%= loan.last_name %></td>
+			<td><%= loan.email %></td>
+			<td><%= number_to_currency(loan.amount) %></td>
+		</tr>
+	<% end %>
+</table>

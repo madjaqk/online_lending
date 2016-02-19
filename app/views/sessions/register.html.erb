@@ -1,0 +1,39 @@
+<style type="text/css">
+	div.register{
+		display: inline-block;
+		vertical-align: top;
+		padding: 25px;
+		margin: 50px;
+		border: 5px solid blue;
+	}
+	h2{
+		margin: 0px;
+	}
+</style>
+<div>
+	<div class="register">
+		<h2>Lender</h2>
+		<%= simple_form_for @lender, :url => "/online_lending/lender" do |f| %>
+			<%= f.input :first_name %>
+			<%= f.input :last_name %>
+			<%= f.input :email %>
+			<%= f.input :password %>
+			<%= f.input :money %>
+			<%= f.button :submit, "Register" %>
+		<% end %>
+	</div>
+	<div class="register">
+		<h2>Borrower</h2>
+		<%= simple_form_for @borrower, :url => "/online_lending/borrower" do |f| %>
+			<%= f.input :first_name %>
+			<%= f.input :last_name %>
+			<%= f.input :email %>
+			<%= f.input :password %>
+			<%= f.input :purpose, :label => "Need Money For" %>
+			<%= f.input :description, input_html: {rows: 4, cols: 50} %>
+			<%= f.input :money, :label => "Amount Needed" %>
+			<%= f.button :submit, "Register" %>
+		<% end %>
+	</div>
+</div>
+<a href="/online_lending/login">Already a member?</a>
