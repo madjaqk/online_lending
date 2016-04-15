@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  root 'sessions#login'
+  
   get 'sessions/login'
 
   get 'online_lending/login' => 'sessions#login'

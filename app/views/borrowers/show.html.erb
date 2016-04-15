@@ -11,15 +11,19 @@
 </table>
 
 <h3>List of people who have lent you money:</h3>
-<table>
-	<tr><th>Name:</th>
-		<th>E-mail:</th>
-		<th>Amount Lent:</th>
-	</tr>
-	<% @loans.each do |loan| %>
-		<tr><td><%= loan.first_name %> <%= loan.last_name %></td>
-			<td><%= loan.email %></td>
-			<td><%= number_to_currency(loan.amount) %></td>
+<table class="table table-striped">
+	<thead>
+		<tr><th>Name:</th>
+			<th>E-mail:</th>
+			<th>Amount Lent:</th>
 		</tr>
-	<% end %>
+	</thead>
+	<tbody>
+		<% @loans.each do |loan| %>
+			<tr><td><%= loan.first_name %> <%= loan.last_name %></td>
+				<td><%= loan.email %></td>
+				<td><%= number_to_currency(loan.amount) %></td>
+			</tr>
+		<% end %>
+	</tbody>
 </table>
