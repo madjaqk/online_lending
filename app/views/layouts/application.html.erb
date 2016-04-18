@@ -19,7 +19,7 @@
 			<form action="/sessions" method="post">
 				<input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
 				<input type="hidden" name="_method" value="delete">
-				<input type="submit" value="Log Out" class="btn btn-primary">
+				<input type="submit" value="Log Out" class="btn btn-primary pull-right">
 			</form>
 		<% end %>
 		<%= yield %>

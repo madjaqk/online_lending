@@ -14,6 +14,9 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
 
+body{
+	background-color: #F4D6AE;
+}
 div.register{
 	display: inline-block;
 	vertical-align: top;
@@ -28,4 +31,10 @@ h2{
 }
 div.holder{
 	padding: 15px;
+}
+.table-striped>tbody>tr:nth-child(odd)>td{
+	background-color:#E3C59D;
+}
+.table-hover>tbody>tr:hover>td{
+	background-color: #D2B48C;
 }
